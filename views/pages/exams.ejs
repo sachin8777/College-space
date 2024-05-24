@@ -1,0 +1,28 @@
+<% layout('boilerplate/exam') %>
+<div class="container">
+  <div class="row m-4">
+    <div class="col-md-6">
+      <div class="form-group">
+        <select
+          class="form-control"
+          id="exampleFormControlSelect1"
+          onchange="examFunc(this.value)"
+        >
+          <option value=" ">Choose Department...</option>
+          <option value="cse">Computer Science Engineering</option>
+          <option value="me">Mechanical Engineering</option>
+          <option value="ee">Electrical Engineering</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function examFunc(e) {
+    if (e) {
+      document.location.href = "/exam/" + e;
+    }
+  }
+  examFunc();
+</script>

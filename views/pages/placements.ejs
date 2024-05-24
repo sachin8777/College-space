@@ -1,0 +1,50 @@
+<% layout("boilerplate/boilerplate") %>
+
+<div class="container">
+  <h1 class="text-center">Our Placements</h1>
+  <div class="row">
+    <% for ( placement of placements) {%>
+    <div class="col-12 col-md-12 col-lg-6 mt-2 mb-2">
+      <div class="card text-center bg-dark text-white">
+        <img
+          class="card-img placementsImg"
+          src="<%= placement.image %>"
+          alt="Card image"
+        />
+        <div class="card-img-overlay">
+          <div class="card-header">
+            <h3><%= placement.name %> </h3>
+             <h5><%= placement.department %> <%= placement.year %></h5>
+          </div>
+          <h4 class="card-title mt-2"><%= placement.company %> <%= placement.designation %></h4>
+          <p class="card-text">
+             <%= placement.about %>
+          </p>
+          <p class="card-text">Annual CTC : <%= placement.ctc %></p>
+
+          <div class="card-footer">Email: <%= placement.email %></div>
+        </div>
+      </div>
+      <a
+        class="btn btn-primary btn-floating m-1"
+        style="background-color: #0082ca"
+        target="_blank"
+        href="<%= placement.linkedInLink %>"
+        role="button"
+        data-toggle="tooltip" data-placement="top" title="LinkedIn Account of <%= placement.name %>"
+        ><i class="bi bi-linkedin"></i
+      ></a>
+      <a
+        class="btn btn-primary btn-floating m-1"
+        style="background-color: #333333"
+        target="_blank"
+        href="<%= placement.githubLink %>"
+        role="button"
+         data-toggle="tooltip" data-placement="top" title="Github Account of <%= placement.name %>"
+        ><i class="bi bi-github"></i
+      ></a>
+      <hr style="border: solid rgb(0, 0, 0) 2px" />
+    </div>
+    <% } %>
+  </div>
+</div>

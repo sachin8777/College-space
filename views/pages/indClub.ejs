@@ -1,0 +1,55 @@
+<%- layout('boilerplate/boilerplate') %>
+<div class="container">
+   <nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    
+    <li class="breadcrumb-item"><a href="<%= originalUrl.slice(0, originalUrl.lastIndexOf('/')) %>">All Clubs</a></li>
+    <li class="breadcrumb-item active" aria-current="page">About <%= club.title %>   </li>
+  </ol>
+</nav>
+  <h2 class="text-center p-4"><%= club.title %></h2>
+  <div class="card background">
+    <h5 class="text-center p-4"><%=club.clubLine %></h5>
+    <p class="p-4 text-muted"><%= club.clubDescription %></p>
+  </div>
+
+  <div class="row p-2 mt-4 mb-4">
+    <% for(student of students) { %>
+    <div class="col-12 col-md-6 col-lg-3  mt-4 mb-4">
+      <div class="card text-center">
+        <img
+          src="<%= student.studentCrImg %>"
+          class="card-img-top sizeInd"
+          alt="..."
+        />
+        <div class="card-header">
+          <h6>Student Coordinater</h6>
+          <%= student.name %>
+        </div>
+        <div class="card-body">
+          <p class="card-text"><%= student.department%></p>
+          <div class="card-footer text-muted">Email <%= student.email %></div>
+        </div>
+      </div>
+    </div>
+    <% } %> <% for(teacher of teachers) { %>
+    <div class="col-12 col-md-6 col-lg-3  mt-4 mb-4">
+      <div class="card text-center">
+        <img
+          src="<%= teacher.teacherCrImg %>"
+          class="card-img-top sizeInd"
+          alt="..."
+        />
+        <div class="card-header">
+          <h6>Teacher Coordinater</h6>
+          <%= teacher.name %>
+        </div>
+          <div class="card-body">
+             <p class="card-text"><%= teacher.department%></p>
+             <div class="card-footer text-muted">Email <%= teacher.email %></div>
+          </div>
+      </div>
+    </div>
+    <% } %>
+  </div>
+</div>

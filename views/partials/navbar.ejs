@@ -1,0 +1,77 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+   <a class="navbar-brand" href="">
+      <img src="/images/img1.png" alt="Bootstrap" width="80" height="56"> 
+    </a>
+    <a class="navbar-brand" href="">College Space</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div class="navbar-nav">
+     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="/home">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/clubs">Clubs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/placement">Placements</a>
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link" href="/internship">Internships</a>
+        </li> -->
+  <li class="nav-item dropdown">
+          <a class="nav-link" href="/exam" >
+            Exams
+          </a>
+          <!-- <ul class="dropdown-menu bg-dark text-light">
+            <li><a class="dropdown-item bg-dark text-light" href="/notes">Notes</a></li>
+            <li><a class="dropdown-item bg-dark text-light" href="pyq">Previous Question paper</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item bg-dark text-light" href="examDates">Know About Exam dates</a></li>
+          </ul> -->
+        </li>
+
+<li class="nav-item">
+          <a class="nav-link" href="/announcements">Announcements</a>
+        </li> 
+  <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="/connect/" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Connect
+          </a>
+          <!-- <ul class="dropdown-menu bg-dark text-light"> -->
+              <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item bg-dark text-light " href="/connect/cse">To Students of Department of Computer Science & Engineering</a>
+            <hr class="dropdown-divider drop">
+            <a class="dropdown-item bg-dark text-light " href="/connect/me">To Students of Department of Mechanical Engineering</a>
+            <hr class="dropdown-divider drop">
+            <a class="dropdown-item bg-dark text-light" href="/connect/ee">To Students of Department of Electrical Engineering</a>
+        </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/alumni">Alumni</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about">About</a>
+        </li>
+      <% if (currentUser) {%>
+        <li class="nav-item">
+          <a class="nav-link" href='/profile/<%= currentUser._id%>'>My Profile</a>
+        </li>
+     <% } %>
+    </div>
+     
+      <div class="navbar-nav ms-auto">
+        <% if (!currentUser) {%>
+        <a href="/register" class="nav-link ">Register</a>
+        <a href="/login" class="nav-link ">Login</a>
+        <% } else {%>
+        <a href="/logout" class="nav-link ">Logout</a>
+       <% } %>
+      </div>
+   </div>
+  </div>
+   
+</nav>

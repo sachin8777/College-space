@@ -1,0 +1,47 @@
+<% layout('boilerplate/boilerplate') %>
+
+<div class="container">
+  <div class="row justify-content-md-center p-4 m-4">
+    <div class="col-12">
+      <div class="card text-center">
+        <div class="card-body">
+          <h2 class="text-center">Complete All Details</h2>
+          <form action="/profile/<%= user._id %>/update" method="post" enctype="multipart/form-data">
+            <hr />
+            <h5>Enter Links :</h5>
+            <input
+              class="form-control m-1"
+              name="githubLink"
+              type="text"
+              placeholder="Github Link"
+              <%if(user.githubLink){%>
+                value="<%= user.githubLink %>" 
+             <% } %> 
+              aria-label="default input example">
+            <input
+              class="form-control m-1"
+              name="linkedInLink"
+              type="text"
+              placeholder="linkedInLink Link"
+              <% if (user.linkedInLink) {%>
+               value="<%= user.linkedInLink %>"
+             <% } %> aria-label="default input
+            example">
+            <hr />
+            <div class="mb-3">
+              <h5>Upload Image</h5>
+              <input
+                class="form-control"
+                name="image"
+                type="file"
+                id="image"
+                multiple
+              />
+            </div>
+            <button class="btn btn-success">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

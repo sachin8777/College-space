@@ -1,0 +1,36 @@
+<%- layout('boilerplate/boilerplate') %>
+
+<div class="container">
+  <div class="row">
+    <% for ( club of clubs) { %>
+    
+    <div class="col-12 col-md-6 col-lg-4 mt-4 p-2">
+       <div class="card">
+          <img
+        src="<%= club.image %>"
+        class="card-img-top size"
+        alt="<%= club.title %> image"
+      />
+      <div class="card-body">
+        <h5 class="card-title text-center"><%= club.title %></h5>
+        <p class="card-text"><%= club.about %></p>
+         
+          <p class="list-group-item">Student Coordinators : <% for (student of club.studentCr) { %>
+               <%= student.name %>, 
+         <% } %> </p>
+         
+          <p class="list-group-item">Teacher Coordinators : <% for (teacher of club.teacherCr) {%>
+               <%= teacher.name %>, <% } %></p>
+         
+          
+        <a href="/clubs/<%= club._id %>" class="btn btn-primary mt-4">Know More about <%=club.title %></a>
+        <!-- <div class="card-footer text-body-secondary mt-2">
+          <%= club.members %> Members
+        </div> -->
+      </div>
+
+       </div>
+    </div>
+    <% } %>
+  </div>
+</div>

@@ -1,0 +1,91 @@
+<% layout('boilerplate/branch') %>
+<section >
+    <nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    
+    <li class="breadcrumb-item"><a href="<%= originalUrl.slice(0, originalUrl.lastIndexOf('/')) %>">Search different semester</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Students of <%= list.department %> Department</li>
+  </ol>
+</nav>
+    <h3 class="text-muted text-center font-weight-bold">
+      Students of <%= list.department %> Department
+    </h3>
+    <div class="container">
+      <h5 class="text-center" style="background-color: #333333; color: white;">Semester <%= list.sem %></h5>
+      <div class="row">
+       <% for ( let student of list.students) { %>
+           <div class="col-12 col-md-6 col-lg-auto m-2 " style="width: 18rem;">
+          <div class="card text-center" >
+            <img src="<%= student.image %>" class="card-img-top size" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title"><%= student.name%></h5>
+              <p class="card-text">
+                 <%= student.about%>
+              </p>
+            </div>
+            <div class="card-footer text-muted">
+              <form action="/profile/<%= student._id %>">
+                 <button class="btn"><a
+               class="btn btn-primary btn-floating m-1"
+               style="background-color: #3b5998"
+               role="button"
+               ><i class="bi bi-person-lines-fill"></i></a>
+              </button>
+              </form>
+            </div>
+            <!-- <ul class="list-group list-group-flush">
+              <li class="list-group-item">Email</li>
+              <li class="list-group-item"><%= student.email %></li>
+            </ul> -->
+              <!-- <div class="card-footer text-muted">
+                  Social Media Links  <li class="list-group-item">
+ <!-- Facebook -->
+            <!-- <a
+               class="btn btn-primary btn-floating m-1"
+               style="background-color: #3b5998"
+               target="_blank"
+               href="<%= student.fbLink %>"
+               role="button"
+               ><i class="bi bi-facebook"></i></a>
+
+            <!-- Twitter -->
+            <!-- <a
+               class="btn btn-primary btn-floating m-1"
+               style="background-color: #55acee"
+               target="_blank"
+               href="<%= student.twitterLink %>"
+               role="button"
+               ><i class="bi bi-twitter"></i></a> -->
+
+            <!-- Instagram -->
+            <!-- <a
+               class="btn btn-primary btn-floating m-1"
+               style="background-color: #d958d9"
+              target="_blank"
+               href="<%= student.instaLink %>"
+               role="button"
+               ><i class="bi bi-instagram"></i></a> -->
+<!-- 
+               <a
+               class="btn btn-primary btn-floating m-1"
+               style="background-color: #333333"
+               target="_blank"
+               href="<%= student.githubLink %>"
+               role="button"
+               ><i class="bi bi-github"></i></a>
+               <a
+               class="btn btn-primary btn-floating m-1"
+               style="background-color: #0082ca"
+               target="_blank"
+               href="<%= student.linkedInLink %>"
+               role="button"
+               ><i class="bi bi-linkedin"></i></a>
+              </li>
+               </div>   -->
+          </div>
+        </div>
+
+       <% } %>
+      </div>
+    </div>
+  </section>

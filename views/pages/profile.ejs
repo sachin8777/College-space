@@ -1,0 +1,124 @@
+<% layout('boilerplate/boilerplate') %>
+
+<div class="container" >
+  <div class="row justify-content-md-center p-4">
+       <h1 class="text-center">My Profile</h1>
+    <div class="col-md-10">
+      <div class="card text-center "  style="background-color: #e8e4f0;">
+        
+       <% if ( user.image) {%>
+        <img src="<%= user.image %>"
+        class="card-img-top profilePic m-2" alt="Kindly Upload an Image">
+        <% if (user._id.equals(currentUser._id)) {%>
+         <form action="/profile/<%= user._id %>/update_img" method="POST" enctype="multipart/form-data">
+                
+                  <div class="row justify-content-center">
+                  <div class="col-lg-center w-25 ">
+                      <input type="file"  id="image" name="image" class="form-control" aria-describedby="inputGroupFileAddon04" aria-label="Profile Image">
+                  </div> 
+                </div>
+              <button class="btn btn-primary mt-2">Update new image</button>
+        </form>
+         <% } %>
+       <% } else { %>
+           <form action="/profile/<%= user._id %>/update_img" method="POST" enctype="multipart/form-data">
+                 <div class="image-upload">
+                    <label for="file-input" style="display: block;">
+                         <img src="/images/user1.png"/>
+                    </label>
+                 <% if (user._id.equals(currentUser._id)) { %>
+                    <input type="file"  id="file" name="file" class="form-control" aria-describedby="inputGroupFileAddon04" aria-label="Profile Image">
+                  </div>
+                 <button class="btn btn-primary"> Upload </button>
+                <% } %>
+            </form>
+        <% } %> 
+        <div class="card-body">
+          <h3 class="card-title"><%= user.name %></h3>
+          <h5 class="card-text"><%= user.department %></h5>
+          <h5 class="card-text">Semester : <%= user.semester %></h5>
+          <h5 class="card-text">Roll No : <%= user.rollNo %></h5>
+
+          <div>
+            <% if (user.linkedInLink) { %>
+            <a
+              class="btn btn-primary btn-floating m-1"
+              style="background-color: #0082ca"
+              href="<%= user.linkedInLink  %>"
+              role="button"
+              target="_blank"
+              ><i class="bi bi-linkedin"></i>
+            </a>
+           <% } else if (user._id.equals(currentUser._id)) { %>
+               
+              <form action="/profile/<%= user._id %>/update" class="col" method="POST">
+                 <div class="col">
+                    <input name="linkedInLink"  type="text" class="form-control p-2 m-2" placeholder="LinkedIn Link">
+                    <button class="btn btn-primary"> Add LinkedIn Profile</button>
+                 </div>
+              </form>
+            <!-- Github -->
+            <% } %> 
+           <% if (user.githubLink) {%>
+
+            <a
+              class="btn btn-primary btn-floating m-1"
+              style="background-color: #333333"
+              href="<%= user.githubLink %>"
+              target="_blank"
+              role="button"
+              ><i class="bi bi-github"></i>
+            </a>
+            <% } else if (user._id.equals(currentUser._id)) {%>
+              <form action="/profile/<%= user._id %>/update" class="col" method="POST">
+                 <div class="col">
+                   <input  name="githubLink"  type="text" class="form-control p-2 m-2" placeholder="Github Link">
+                   <button class="btn btn-primary"> Add Github Profile</button>
+                 </div>
+              </form>
+            <% } %>
+          </div>
+
+          <!-- Notes -->
+           <div class="row m-4" >
+               <h3>Notes</h3>
+           <div class="row"></div>
+          <% for (note of user.notes) { %>
+            <div class="col-12 col-md-12 col-lg-4 mt-2 ">
+                <li class="list-group-item"> <a href="<%= note.downloadLink %>" target="_blank"><img class="notes" src="/images/notes.jpg" alt=""></a>
+                <p><%= note.name %></p></li> 
+             </div>
+          <% } %>
+            </div>
+          <% if ( user._id.equals(currentUser._id) ) {%>
+            <form action="/profile/<%= user._id %>/updates" method="post" enctype="multipart/form-data">
+               <!-- <label for="file-input" style="display: block;">
+                         <img class="notes" src="/images/user1.png"/>
+                </label> -->
+                <div class="row justify-content-center">
+                  <div class="col-lg-center w-25 ">
+                      <input type="file"  id="file" name="file" class="form-control" aria-describedby="inputGroupFileAddon04" aria-label="Profile Image">
+                  </div>
+                </div>
+              <button class=" btn btn-primary mt-2"> Upload Notes</button>
+            </form>
+           <% } %>
+           </div>
+
+          <!-- <div>
+            <% if (user.githubLink || user.linkedInLink) {%>
+            <a href="/profile/<%= user._id %>/update" class="btn btn-primary">
+              Update
+            </a>
+            <% } else { %>
+            <a href="/profile/<%= user._id %>/update" class="btn btn-primary">
+              Complete profile
+            </a>
+            <% } %>
+          </div> -->
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

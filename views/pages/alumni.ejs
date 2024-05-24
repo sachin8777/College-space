@@ -1,0 +1,71 @@
+<% layout('boilerplate/boilerplate') %>
+<div class="container mt-4 mb-4">
+  <h1 class="text-center m-4">Alumni's</h1>
+
+  <div class="row">
+    <% for( alumni of alumnis) { %>
+    <div class="col-12 col-md-6 col-lg-3 mb-2 mt-2">
+      <div class="card text-center">
+          <img class="card-img-top sizeInd" src="<%= alumni.image %>" alt="Card image cap">
+          <h5 class="card-title"><%= alumni.name %></h5>
+          <h6 class="card-subtitle mb-2 text-muted"><%= alumni.department %> <%= alumni.year %></h6>
+          <p class="card-text">
+            <%= alumni.about %>
+          </p>
+              <ul class="list-group list-group-flush">
+              <li class="list-group-item">Email</li>
+              <li class="list-group-item"><%= alumni.email %></li>
+            </ul>
+              <div class="card-footer text-muted">
+                  Social Media Links 
+           <li class="list-group-item">
+ <!-- Facebook -->
+            <!-- <a
+               class="btn btn-primary btn-floating m-1"
+               style="background-color: #3b5998"
+               target="_blank"
+               href=""
+               role="button"
+               ><i class="bi bi-facebook"></i></a> -->
+
+            <!-- Twitter -->
+            <!-- <a
+               class="btn btn-primary btn-floating m-1"
+               style="background-color: #55acee"
+               target="_blank"
+               href=""
+               role="button"
+               ><i class="bi bi-twitter"></i></a> -->
+
+            <!-- Instagram -->
+            <!-- <a
+               class="btn btn-primary btn-floating m-1"
+               style="background-color: #d958d9"
+              target="_blank"
+               href=""
+               role="button"
+               ><i class="bi bi-instagram"></i></a> -->
+
+               <a
+               class="btn btn-primary btn-floating m-1"
+               style="background-color: #333333"
+               target="_blank"
+               href="<%= alumni.githubLink%>"
+               role="button"
+               data-toggle="tooltip" data-placement="bottom" title="LinkedIn account of <%= alumni.name %>"
+               ><i class="bi bi-github"></i></a>
+               <a
+               class="btn btn-primary btn-floating m-1"
+               style="background-color: #0082ca"
+               target="_blank"
+               href="<%= alumni.linkedInLink %>"
+               role="button"
+               data-toggle="tooltip" data-placement="bottom" title="Github account of <%= alumni.name %>"
+               ><i class="bi bi-linkedin"></i></a>
+              </li>
+           </div>
+      </div>
+    </div>
+    <% } %>
+  </div>
+</div>

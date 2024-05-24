@@ -1,0 +1,57 @@
+<% layout('boilerplate/exam') %>
+<div class="container">
+     <nav aria-label="breadcrumb">
+       <ol class="breadcrumb">
+         <li class="breadcrumb-item"><a href="<%= originalUrl.slice(0, originalUrl.lastIndexOf('/')) %>">Select Department</a></li>
+         <li class="breadcrumb-item active" aria-current="page">Material of <%= exams.departmentName %> </li>
+       </ol>
+   </nav>
+  <h1 class="text-center"><%= exams.departmentName %></h1>
+  <div class="row m-4">
+    <div class="col-12">
+      <% for ( sem of exams.semester) {%>
+      <h3 class="text-center bg-black text-light m-4">Semester <%= sem.sem %></h3>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">Sr. No</th>
+            <th scope="col">Subject Name</th>
+            <th scope="col">Notes</th>
+            <th scope="col">Question Paper</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% let i = 1 %>
+          <% for (subject of sem.subject) {%>
+          <tr>
+            <th scope="row"><%= i %></th>
+            <td><%= subject.courseCode %> : <%= subject.subjectName %> </td>
+            <td>
+              <a
+                class="btn btn-primary btn-floating m-1"
+                style="background-color: #7b0404"
+                href="<%= subject.notesLink %>"
+                role="button"
+                target="_blank"
+                ><i class="bi bi-file-pdf"></i
+              ></a>
+            </td>
+            <td>
+              <a
+                class="btn btn-primary btn-floating m-1"
+                style="background-color: #7b0404"
+                href="<%= subject.questionPaperLink %>"
+                role="button"
+                target="_blank"
+                ><i class="bi bi-file-pdf"></i
+              ></a>
+            </td>
+          </tr>
+          <% i++ %>
+          <% } %>
+        </tbody>
+      </table>
+      <% } %>
+    </div>
+  </div>
+</div>
